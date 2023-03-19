@@ -1,0 +1,238 @@
+body{
+    margin: 0;
+    background-color: #c7d3f4;
+}
+.navbar{
+    margin-top: -10vh;
+    margin-left: 77vw;
+    z-index: 1;
+}
+
+.navbarWorker{
+    margin-top: -10vh;
+    margin-left: 90vw;
+    z-index: 1;
+}
+
+
+a{
+    font-size: 2.2vh;
+}
+
+a:link{
+    text-decoration: none;
+    color: white;
+}
+
+a:visited{
+    color: white;
+}
+
+table a:link, #RegistracijaBTN:link, #FonsBTN:link{
+	text-decoration: none;
+    color: black;
+}
+
+table a:visited, #RegistracijaBTN:visited, #FonsBTN:visited{
+    color: black;
+}
+
+.navbar #FonsBTN:link{
+	text-decoration: none;
+    color: black;
+}
+
+.navbar #FonsBTN:visited{
+	color: white;
+}
+.login-input a:after {
+  content: "";
+  display: block;
+  height: 0;
+  width: 1px;
+}
+
+.links{
+    margin-top: -13vh;
+    z-index: 1;
+    padding: 1vh;
+}
+
+#IzlogotiesBTN, #DarbinieksBNT, #SarakstsBTN {
+    padding: 1vw;
+}
+
+#header{
+    font-size: 5vh;
+}
+
+h1{
+    font-size: 5vh;
+}
+
+.info-header{
+    font-size: 4vh;
+}
+
+.worker-information{
+    font-size: 4vh;
+    line-height: 8vh;
+    background-color: white;
+    height: 8vh;
+    width: 35vw;
+    border-radius: 20px;
+}
+
+.login-header, .registration-header, .scheduleSettings-header, .workerSettings-header, .workerInfo-header{
+    position: fixed;
+    width: 100%;
+    margin-top: -20px;
+    height: 11vh;
+    line-height:7vh;
+    background-image: linear-gradient(to right, #006cc2, rgb(44, 12, 128));
+    margin-bottom:10px;
+    text-align: center;
+    color:white;
+}
+
+.login-input, .registration-input, .scheduleSettings-input, .workerSettings-input, .workerInfo-output, .scheduleChange{
+    text-align: center;
+    position:fixed;
+    margin-top: 35vh;
+    margin-left: 32.5%;
+}
+
+.scheduleChange{
+	margin-top: 10%;
+}
+
+.registration-input{
+    margin-top: 6.1%;
+}
+
+.scheduleSettings-input{
+    margin-top: 13%;
+}
+
+.workerSettings-input{
+    margin-top: 14vh;
+}
+
+.workerInfo-output{
+    margin-top: 15%;
+}
+
+.workerInfo-output p{
+    margin:5px;
+}
+
+.Schedule{
+    position: fixed;
+    margin-left: 5%;
+    margin-top: 7%;
+}
+
+input, select{
+    height: 7vh;
+    width: 35vw;
+    border-radius: 20px;
+}
+
+label{
+    font-size: 4vh;
+}
+
+#btn{
+    height: 6vh;
+    width: 15vw;
+    background-color: #006cc2;
+    color:white;
+    font-size: 2vh;
+    margin-top: 3vh;
+}
+
+#btn2{
+    height: 6vh;
+    width: 15vw;
+    background-color: #b2abab;
+    color:black;
+    font-size: 2vh;
+    margin-top: 3vh;
+}
+
+#btn:active, #btn2:active {
+    background-color: #6f0404;
+}
+
+.btn-left{
+    float: left;
+}
+
+.btn-right{
+    float: right;
+}
+
+input{
+    font-size: 4vh;
+    text-align: center;
+}
+.Meklesana{
+	border:5vh solid #c7d3f4;
+	margin-left: -1.5vw;
+}
+.MekletINPUT, .MekletBTN, .FiltretBTN{
+	font-size: 2vh;
+	height: 5vh;
+    width: 20vw;
+    border-radius: 20px;
+	float: left;
+}
+
+.MekletBTN, .FiltretBTN{
+	height: 5.9vh;
+	width: 10vw;
+	margin-left:1vh;
+}
+
+.FiltretBTN{
+    width: 5vw;
+    background-image: linear-gradient(to right, #006cc2, rgb(44, 12, 128));
+    color: white;
+
+}
+
+table{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90vw;
+}
+
+td, th{
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+div.table{
+    height: 50vh;
+    width: 91.2vw;  
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+
+tr:nth-child(even){
+    background-color: white
+}
+
+.WorkersList {
+    position: fixed;
+
+    margin-top: 20vh;
+    margin-left: 5vw;
+    margin-right: auto;
+    width: 50vw;
+}
+
+a{
+    line-height: 50px;
+}
