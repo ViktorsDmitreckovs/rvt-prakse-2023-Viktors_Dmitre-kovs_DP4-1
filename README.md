@@ -1,1 +1,2 @@
-# rvt-prakse-2023-Viktors_Dmitreckovs_DP4-1
+# Viesnīcas apkopēja uzskaites un darba slodzes sarakstu izveidošanas sistēma
+## Viktors Dmitrēckovs DP4-1
