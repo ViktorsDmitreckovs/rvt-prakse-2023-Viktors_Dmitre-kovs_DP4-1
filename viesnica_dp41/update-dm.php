@@ -65,12 +65,12 @@
                    </select>
                    </div>
 
-                   <label for="apartment">Telpa</label><br>
+                   <label for="apartment">Dzīvokļis</label><br>
                    <div>
                    <select name="room" id="room">
                    <?php
                       while($row4 = mysqli_fetch_array($result4)){
-                        echo "<option value=".$row4['ID'].">".$row4['Nosaukums']." | Viesnīcas stāvs: ".$row4['Stavs']." | Telpas numurs: ".$row4['Numurs']."</option>";
+                        echo "<option value=".$row4['ID'].">".$row4['Nosaukums']." | Viesnīcas stāvs: ".$row4['Stavs']." | Dzīvokļa numurs: ".$row4['Numurs']."</option>";
                       }
                 
                    ?>
