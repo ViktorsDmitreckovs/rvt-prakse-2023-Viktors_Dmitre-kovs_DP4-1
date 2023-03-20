@@ -1,1 +1,1 @@
-# rvt-prakse-2023-Viktors_Dmitre-kovs_DP4-1
+# rvt-prakse-2023-Viktors_Dmitreckovs_DP4-1
