@@ -13,6 +13,10 @@ if($data===false)
      die("connection error");
 }
 
+$sql1 = "Select lomas_ID, lomas_nosaukums 
+From Viesnica_dp41.lomas";
+$result1 = $data->query($sql1);
+
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
 	$name=$_POST["name"];
@@ -32,6 +36,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 	
 	if($result>0){
 		echo '<script type="text/javascript">alert("Jau ir tāds lietotājs")</script>';
+	}
+	else if(preg_match('~[0-9]+~', $name) || preg_match('~[0-9]+~', $surname)){
+		echo '<script type="text/javascript">alert("Vārda vai uzvārda ir cipari")</script>';
+	}
+	else if(preg_match("/[a-z]/i", $personcode)){
+		echo '<script type="text/javascript">alert("Personas koda ir burti")</script>';
 	}
 	else{
 		$sql="INSERT INTO Viesnica_dp41.darbinieks(vards, uzvards, personas_kods, lietotajvards, parole, loma) 
@@ -75,7 +85,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         <input type="text" id="personcode" name="personcode" required><br>
 
         <label for="post">Loma</label><br>
-        <input type="text" id="post" name="role" required><br>
+        <div>
+            <select name="role" id="post">
+            <?php
+            while($row1 = mysqli_fetch_array($result1)){
+                echo "<option value=".$row1['lomas_ID'].">".$row1['lomas_nosaukums']."</option>";
+            }
+                
+            ?>
+            </select>
+        </div>
 
         <label for="username">Lietotājvārds</label><br>
         <input type="text" id="username" name="username" required><br>

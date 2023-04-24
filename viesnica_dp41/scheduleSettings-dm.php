@@ -64,7 +64,7 @@ $result4 = $mysqli->query($sql4);
                 <select name="room" id="room">
                 <?php
                 while($row4 = mysqli_fetch_array($result4)){
-                    echo "<option value=".$row4['ID'].">".$row4['Nosaukums']." | Viesnīcas stāvs: ".$row4['Stavs']." | Dzīvokļa numurs: ".$row4['Numurs']."</option>";
+                    echo "<option value=".$row4['ID'].">Dzīvokļa numurs: ".$row4['Numurs']."</option>";
                 }
                 
                 ?>

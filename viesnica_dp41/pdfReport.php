@@ -26,7 +26,7 @@ class PDF extends FPDF{
 		$this->SetFont('Arial','B',16);
 		$this->Cell(60,10,'Darbinieks',0,0);
 		$this->Cell(50,10,'Viesnica',0,0);
-		$this->Cell(30,10,'Telpa',0,0);
+		$this->Cell(30,10,'Dzivoklis',0,0);
 		$this->Cell(40,10,'Datums',0,1);
 		$this->SetFont('Arial','8',16);
 		$y = $this->GetY();

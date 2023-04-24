@@ -95,11 +95,15 @@ h1{
     color:white;
 }
 
-.login-input, .registration-input, .scheduleSettings-input, .workerSettings-input, .workerInfo-output, .scheduleChange{
+.login-input, .registration-input, .scheduleSettings-input, .workerSettings-input, .workerInfo-output, .scheduleChange, .workersInfo{
     text-align: center;
     position:fixed;
     margin-top: 35vh;
     margin-left: 32.5%;
+}
+.workersInfo{
+	margin-top: 30vh;
+	margin-left: 32.5%;
 }
 
 .scheduleChange{
@@ -136,6 +140,11 @@ input, select{
     height: 7vh;
     width: 35vw;
     border-radius: 20px;
+}
+
+.MekletNumuru{
+	width: 9vw;
+	height: 3vh;
 }
 
 label{
@@ -196,8 +205,10 @@ input{
 
 .FiltretBTN{
     width: 5vw;
+	height: 3vh;
     background-image: linear-gradient(to right, #006cc2, rgb(44, 12, 128));
     color: white;
+	float: none;
 
 }
 
@@ -235,4 +246,30 @@ tr:nth-child(even){
 
 a{
     line-height: 50px;
+}
+
+#name{
+	font-size: 4vh;
+	text-align: center;
+}
+
+#room, #post{
+	font-size: 4vh;
+	text-align: center;	
+}
+
+#post{
+	font-size: 3.5vh;
+}
+
+.name, .time, .lastDate{
+	margin-top: 1vh;
+	border-radius: 20px;
+    background: white;
+    width: 35vw;
+    height: 7vh;
+}
+
+table td, table th{
+	font-size: 2.2vh;
 }

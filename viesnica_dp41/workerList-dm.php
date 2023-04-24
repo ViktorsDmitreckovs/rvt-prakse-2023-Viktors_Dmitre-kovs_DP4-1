@@ -53,7 +53,7 @@ $result = $mysqli->query($sql);
         <table>
             <tr>
                 <th>Darbinieks</th>
-                <th>Statuss</th>
+                <th>Statuss <?php echo "(" . date("Y-m-d") . ")";?></th>
             </tr>
 
             <?php

@@ -16,7 +16,7 @@ if ($mysqli->connect_error) {
 }
  
 $sql = "Select Viesnica_dp41.saraksts.saraksta_ID AS saraksts, CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards)
-AS darbinieks, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
+AS darbinieks, Viesnica_dp41.darbinieks.darbinieka_ID AS DarbiniekaID, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
 Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs
 From Viesnica_dp41.darbinieks
 inner join Viesnica_dp41.saraksts
@@ -27,6 +27,14 @@ inner join Viesnica_dp41.viesnica
 on Viesnica_dp41.viesnica.viesnicas_ID = Viesnica_dp41.dzivoklis.viesnicas_ID
 ORDER BY Viesnica_dp41.saraksts.saraksta_ID";
 $result = $mysqli->query($sql);
+
+$sql4 = "SELECT viesnica_dp41.viesnica.nosaukums as Nosaukums ,viesnica_dp41.dzivoklis.dzivokla_ID as ID, viesnica_dp41.dzivoklis.dzivokla_numurs as Numurs,
+viesnica_dp41.dzivoklis.stavs as Stavs
+FROM viesnica_dp41.dzivoklis
+INNER JOIN viesnica_dp41.viesnica
+ON viesnica_dp41.viesnica.viesnicas_ID = Viesnica_dp41.dzivoklis.viesnicas_ID
+ORDER BY viesnica_dp41.dzivoklis.dzivokla_ID";
+$result4 = $mysqli->query($sql4);
 
 if(isset($_GET['search']))
 {
@@ -47,8 +55,10 @@ if(isset($_GET['search']))
 		  $result = $mysqli->query($sql);
 }
 
-else if(isset($_POST['ASC']))
+else if(isset($_GET['dates']))
 {
+	$dates = $_GET['search_date'];
+	 
     $ascSql="Select Viesnica_dp41.saraksts.saraksta_ID AS saraksts, CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards)
           AS darbinieks, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
           Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs
@@ -59,7 +69,7 @@ else if(isset($_POST['ASC']))
           on Viesnica_dp41.saraksts.dzivokla_ID = Viesnica_dp41.dzivoklis.dzivokla_ID
           inner join Viesnica_dp41.viesnica
           on Viesnica_dp41.viesnica.viesnicas_ID = Viesnica_dp41.dzivoklis.viesnicas_ID
-          ORDER BY CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards)";
+          Where Viesnica_dp41.dzivoklis.dzivokla_numurs = '$dates'";
 
     $result = $mysqli->query($ascSql);
 }
@@ -94,20 +104,28 @@ else if(isset($_POST['ASC']))
 	            <input type="text" name="search_text" placeholder="Meklēt darbinieku" class="MekletINPUT">
 		        <input type="submit" name="search" value="Meklēt" class="MekletBTN">
 	        </form>
-            <form action="schedule.php" method="POST">
-                <input type="submit" name="ASC" value="Filtrēt" class="FiltretBTN">
-            </form>
 	    </div>
 	    <br>
 		<div class="table">
-		<form action="pdfReport.php" method="POST">
           <table>
 		    <thead>
               <tr>
-                  <th>Darbinieks </th>
+                  <th>Darbinieks</th>
                   <th>Viesnīca</th>
-                  <th>Dzīvoklis</th>
-                  <th>Datums</th>
+			    <form action="schedule.php" method="GET">
+                  <th>Dzīvoklis
+					  <select name="search_date" placeholder="Sākartot pēc numura" class="MekletNumuru">
+                      <?php
+                        while($row4 = mysqli_fetch_array($result4)){
+                        echo "<option value=".$row4['Numurs'].">Dzīvokļa numurs: ".$row4['Numurs']."</option>";
+                      }
+                
+                     ?>
+                     </select>
+					 <input type="submit" name="dates" value="Sākartot" class="FiltretBTN">
+				  </th>
+				</form>
+                  <th>Datums </th>
 				  <th>Mainīt</th>
 				  <th>Dzsēst</th>
               </tr>
@@ -119,7 +137,7 @@ else if(isset($_POST['ASC']))
                   {
               ?>
               <tr>
-                  <td><?php echo $rows['darbinieks'];?></td>
+                  <td><?php echo "<a href='worker.php?id={$rows['DarbiniekaID']}'>{$rows['darbinieks']}</a>";?></td>
                   <td><?php echo $rows['nosaukums'];?></td>
                   <td><?php echo "Numurs: ".$rows['telpa']. " Stāvs: ". $rows['stavs'];?></td>
                   <td><?php echo $rows['datums'];?></td>
@@ -132,6 +150,7 @@ else if(isset($_POST['ASC']))
 		    </tbody>
           </table>
 		</div>
+		<form action="pdfReport.php" method="POST">
 		<div class="btn-right">
             <input type="submit" value="Printēt" id="btn2">
         </div>

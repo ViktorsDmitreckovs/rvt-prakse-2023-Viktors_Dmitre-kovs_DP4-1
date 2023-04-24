@@ -5,6 +5,6 @@
 		$uri = 'http://';
 	}
 	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/viesnica/login.php');
+	header('Location: '.$uri.'/viesnica_dp41/login.php');
 	exit;
 ?>
