@@ -1,6 +1,6 @@
 # Viesnīcas apkopēja uzskaites un darbu slodzes sarakstu izveidošanas sistēma
 ## Viktors Dmitrēckovs DP4-1
-## Projekta apraksts
+### Projekta apraksts
 Kvalifikācijas darba uzdevums ir izveidot apkopēja uzskaites un darba slodzes sarakstu izveidošanas sistēmu viesnīcām. Ar tās palīdzību viesnīcas vadītāji var izveidot sarakstu un ievadīt informāciju par darbinieka nostrādāto stundas skaitu. Šī sistēma palīdzēs risināt viesnīcas vadītāju problēmu – papīra izmantošana darbinieka slodzes sarakstu izveidošanai. Galvenais iemesls tam ir tas, ka viesnīcā nav šim uzdevumam paredzētas sistēmas vai sistēma ir grūti saprotama un lietojama. Lai izlabotu problēmas, vajadzētu izveidot intuitīvi saprotamu sistēmu, kas neprasa no vadītāja daudz darbības. Tiešsaistes saraksts atvieglo vadītāja darbu, kas saistīta ar darbinieka sadalījumu viesnīca. Saraksts arī palīdzes ātri atrast darbinieku, kas ir brīvs konkrētā datuma.
 
 Viesnīcas apkopēja uzskaites un darba slodzes sarakstu izveidošanas sistēmai ir jāizpilda vairākas funkcionalitātes:
@@ -11,7 +11,7 @@ Viesnīcas apkopēja uzskaites un darba slodzes sarakstu izveidošanas sistēmai
 *	iespēja vadītājam apskatīt informāciju par darbinieku;
 *	darbinieku, vadītāju reģistrācija un autorizācija.
 
-## Izmantotās tehnoloģijas
+### Izmantotās tehnoloģijas
 Laragon, MySQ 5.7.33 (2021.gada versija), MySQL Server 5.7., Visual Studio Code 1.73.1 (2022.gada versija), Javascript, PHP, HTML, CSS.
 Izmantotas apmācības:
 * https://www.geeksforgeeks.org/create-a-drop-down-list-that-options-fetched-from-a-mysql-database-in-php/
@@ -21,7 +21,7 @@ Izmantotas apmācības:
 * https://code.visualstudio.com/learn
 * https://www.heidisql.com/
 
-## Uzstādīšanas instrukcijas
+### Uzstādīšanas instrukcijas
 Sistēmai ir divu veidu palaišana. Pirmā no tām ir lietotāja puses palaišana. Lietotāja puses palaišana nav nekas vairāk par vienkāršu ieiešanu lapā ar pārlūkprogrammas starpniecību. Viss, kas lietotājam ir jāizdara – jāievada pārlūkprogrammā lapas saite un ar to arī sistēmas palaišana beidzas – lietotājs var brīvi aplūkot lapu. Otrais palaišanas veids ir administratora pusē. Šis palaišanas veids aktivizē pašu sistēmas darbību un sagatavo lapu publikai, līdz ar to atļaujot lietotājam to izmantot un brīvi aplūkot. Sistēmas sagatavošana publikai, tās konfigurēšana un uzstādīšana noris sekojoši.
 
 1. Sākuma jāpielādē projektu no https://github.com/ViktorsDmitreckovs/rvt-prakse-2023-Viktors_Dmitreckovs_DP4-1 .
