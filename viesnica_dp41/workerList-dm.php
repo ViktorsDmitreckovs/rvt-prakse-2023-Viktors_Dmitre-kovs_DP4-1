@@ -38,7 +38,7 @@ $result = $mysqli->query($sql);
 </head>
 <body>
     <div class="scheduleSettings-header">
-        <h1>Saraksts</h1>
+        <h1>Darbinieku saraksts</h1>
 
         <div class="navbar">
             <a id= "IzlogotiesBTN" href="login-dm.php">Iziet</a>
