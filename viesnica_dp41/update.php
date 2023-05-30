@@ -30,8 +30,9 @@
 	
 	  $info = $result->fetch_assoc();
 
-    $sql1 = "Select darbinieka_ID, vards, uzvards
-    From Viesnica_dp41.darbinieks";
+    $sql1 = "Select darbinieka_ID, vards, uzvards, loma
+    From Viesnica_dp41.darbinieks
+    WHERE loma = 2";
     $result1 = $mysqli->query($sql1);
 
     $sql3 = "Select viesnicas_ID, nosaukums
@@ -78,10 +79,10 @@
                    </div>
 
                    <label for="date">Datums</label><br>
-                   <input type="text" id="date" name="date"><br><br>
+                   <input type="text" id="date" name="date" placeholder="YYYY-MM-DD"><br><br>
 				   
 				           <label for="date">Ilgums</label><br>
-                   <input type="text" id="hours" name="hours"><br><br>
+                   <input type="text" id="hours" name="hours" placeholder="hh:mm:ss"><br><br>
 
                    <div style="overflow: auto">
                    <div class="btn-left">

@@ -191,7 +191,7 @@ input{
 	border:5vh solid #E2E2E2;
 	margin-left: -1.5vw;
 }
-.MekletINPUT, .MekletBTN, .FiltretBTN{
+.MekletINPUT, .MekletBTN, .FiltretBTN, .SarakstsBTN{
 	font-size: 2vh;
 	height: 5vh;
     width: 20vw;
@@ -199,7 +199,7 @@ input{
 	float: left;
 }
 
-.MekletBTN, .FiltretBTN{
+.MekletBTN, .FiltretBTN, .SarakstsBTN{
 	height: 5.9vh;
 	width: 10vw;
 	margin-left:1vh;
@@ -212,6 +212,11 @@ input{
     color: white;
 	float: none;
 
+}
+
+.SarakstsBTN{
+	color: white;
+	background-image: linear-gradient(to right, #C20000, rgb(128, 12, 12));
 }
 
 table{

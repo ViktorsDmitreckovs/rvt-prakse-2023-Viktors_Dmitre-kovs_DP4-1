@@ -23,9 +23,12 @@
 			
 		$result = $mysqli->query($sql);
 			
-		if($result){
+		if($result && $date!='' && $hours!=''){
 			echo "<script> window.location.href = 'http://localhost/viesnica_dp41/schedule.php'
 			alert('Sarakstā ir izmaiņas!');</script>";
+		}
+		else if(preg_match("/[a-z]/i", $date) || preg_match("/[a-z]/i", $hours)){
+			echo '<script type="text/javascript">alert("Ievadiet pareizi datumu/laiku")</script>';
 		}
 		else{
 			echo "<script> window.location.href = 'http://localhost/viesnica_dp41/schedule.php'

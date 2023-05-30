@@ -16,7 +16,7 @@ if($data===false)
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
       $username=$_POST["username"];
-	  $password=$_POST["password"];
+      $password=$_POST["password"];
 	  
 	  $sql="SELECT * FROM darbinieks WHERE lietotajvards= '".$username."' AND parole= '".$password."'";
 	  
@@ -24,13 +24,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 	  
 	  $row=mysqli_fetch_array($result);
 	  
-	  if($row["loma"]=="2")
+	  if (isset($row["loma"])){
+        $row = $row["loma"];
+	  }
+	  
+	  if($row=="2")
 	  {   
           $_SESSION["username"]=$username;
 	      header("location:scheduleWorkers-dm.php");
 	  }
 	  
-	  elseif($row["loma"]=="1")
+	  else if($row=="1")
 	  {
 		  $_SESSION["lietotajvards"]=$username;
 	      header("location:schedule-dm.php");

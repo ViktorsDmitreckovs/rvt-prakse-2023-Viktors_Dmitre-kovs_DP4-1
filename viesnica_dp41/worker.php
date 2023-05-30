@@ -30,7 +30,7 @@
 	
 	  $info = $result->fetch_assoc();
 
-    $sql1 = "Select darbinieka_ID, vards, uzvards
+    $sql1 = "Select darbinieka_ID as darbinieks, vards, uzvards
     From Viesnica_dp41.darbinieks
 	WHERE darbinieka_ID='$s_id'";
     $result1 = $mysqli->query($sql1);
@@ -61,14 +61,11 @@
 	?>
 	
                 <div class="workersInfo">
-				   <div>
-				      <input type="text" name="id" value="<?php echo "{$info['saraksta_ID']}"?>" hidden>
-				   </div>
                    <label for="name">Darbinieks</label><br>
                    <div class="name">
                    <?php
                       while($row1 = mysqli_fetch_array($result1)){
-                        echo "<label value=".$row1['darbinieka_ID'].">".$row1['vards']." ".$row1['uzvards']."</label>";
+                        echo "<label value=".$row1['darbinieks'].">".$row1['vards']." ".$row1['uzvards']."</label>";
                      }
                    ?>
                    </div>
@@ -77,9 +74,9 @@
                    <div class="time">
                    <?php
                       while($row3 = mysqli_fetch_array($result3)){
-					  $text = "<label value=".$row3['darbinieks'].">Ilgums(stundas:minutes): ".$row3['h'].":".$row3['m']."</label>";
+					  $text = "<label value=".$row3['h'].">Ilgums(stundas:minutes): ".$row3['h'].":".$row3['m']."</label>";
                       if (str_contains($text,'-')){
-					     echo "<label value=".$row3['darbinieks'].">Ilgums(stundas:minutes): ".$row3['h'].":00</label>";
+					     echo "<label value=".$row3['h'].">Ilgums(stundas:minutes): ".$row3['h'].":00</label>";
 					  }
 					  else{
 					     echo $text;
@@ -89,7 +86,7 @@
                    ?>
                    </div>
 				   
-				   <label for="last">Pedējo reizi viņš strādāja</label><br>
+				   <label for="last">Pedējo reizi viņš/a strādāja</label><br>
                    <div class="lastDate">
                    <?php
                       while($row2 = mysqli_fetch_array($result2)){

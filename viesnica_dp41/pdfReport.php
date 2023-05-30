@@ -17,7 +17,7 @@ inner join Viesnica_dp41.dzivoklis
 on Viesnica_dp41.saraksts.dzivokla_ID = Viesnica_dp41.dzivoklis.dzivokla_ID
 inner join Viesnica_dp41.viesnica
 on Viesnica_dp41.viesnica.viesnicas_ID = Viesnica_dp41.dzivoklis.viesnicas_ID
-ORDER BY Viesnica_dp41.saraksts.saraksta_ID";
+Where Viesnica_dp41.saraksts.datums >= CURDATE()";
 
 $result = $mysqli->query($sql);
 

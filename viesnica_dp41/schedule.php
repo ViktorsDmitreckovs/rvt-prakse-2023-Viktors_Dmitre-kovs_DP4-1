@@ -17,7 +17,8 @@ if ($mysqli->connect_error) {
  
 $sql = "Select Viesnica_dp41.saraksts.saraksta_ID AS saraksts, CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards)
 AS darbinieks, Viesnica_dp41.darbinieks.darbinieka_ID AS DarbiniekaID, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
-Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs
+Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs,
+Viesnica_dp41.dzivokla_tips.tipa_nosaukums AS tips, Viesnica_dp41.dzivokla_izmers.izmers AS izmers
 From Viesnica_dp41.darbinieks
 inner join Viesnica_dp41.saraksts
 on Viesnica_dp41.darbinieks.darbinieka_ID = Viesnica_dp41.saraksts.darbinieka_ID
@@ -25,7 +26,11 @@ inner join Viesnica_dp41.dzivoklis
 on Viesnica_dp41.saraksts.dzivokla_ID = Viesnica_dp41.dzivoklis.dzivokla_ID
 inner join Viesnica_dp41.viesnica
 on Viesnica_dp41.viesnica.viesnicas_ID = Viesnica_dp41.dzivoklis.viesnicas_ID
-ORDER BY Viesnica_dp41.saraksts.saraksta_ID";
+INNER JOIN Viesnica_dp41.dzivokla_tips
+ON Viesnica_dp41.dzivoklis.tipa_ID = Viesnica_dp41.dzivokla_tips.tipa_ID
+INNER JOIN Viesnica_dp41.dzivokla_izmers
+ON Viesnica_dp41.dzivoklis.izmera_ID = Viesnica_dp41.dzivokla_izmers.izmera_ID
+Where Viesnica_dp41.saraksts.datums >= CURDATE()";
 $result = $mysqli->query($sql);
 
 $sql4 = "SELECT viesnica_dp41.viesnica.nosaukums as Nosaukums ,viesnica_dp41.dzivoklis.dzivokla_ID as ID, viesnica_dp41.dzivoklis.dzivokla_numurs as Numurs,
@@ -41,8 +46,9 @@ if(isset($_GET['search']))
 	$text=$_GET['search_text'];
 	
 	$sql="Select Viesnica_dp41.saraksts.saraksta_ID AS saraksts, CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards)
-          AS darbinieks, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
-          Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs
+          AS darbinieks, Viesnica_dp41.darbinieks.darbinieka_ID AS DarbiniekaID, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
+          Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs,
+          Viesnica_dp41.dzivokla_tips.tipa_nosaukums AS tips, Viesnica_dp41.dzivokla_izmers.izmers AS izmers
           From Viesnica_dp41.darbinieks
           inner join Viesnica_dp41.saraksts
           on Viesnica_dp41.darbinieks.darbinieka_ID = Viesnica_dp41.saraksts.darbinieka_ID
@@ -50,9 +56,32 @@ if(isset($_GET['search']))
           on Viesnica_dp41.saraksts.dzivokla_ID = Viesnica_dp41.dzivoklis.dzivokla_ID
           inner join Viesnica_dp41.viesnica
           on Viesnica_dp41.viesnica.viesnicas_ID = Viesnica_dp41.dzivoklis.viesnicas_ID
-          Where CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards) LIKE '%".$text."%'";
+          INNER JOIN Viesnica_dp41.dzivokla_tips
+          ON Viesnica_dp41.dzivoklis.tipa_ID = Viesnica_dp41.dzivokla_tips.tipa_ID
+          INNER JOIN Viesnica_dp41.dzivokla_izmers
+          ON Viesnica_dp41.dzivoklis.izmera_ID = Viesnica_dp41.dzivokla_izmers.izmera_ID
+          Where Viesnica_dp41.saraksts.datums >= CURDATE() AND CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards) LIKE '%".$text."%'";
 		  
 		  $result = $mysqli->query($sql);
+}
+else if(isset($_GET['orderBy'])){
+	$sql = "Select Viesnica_dp41.saraksts.saraksta_ID AS saraksts, CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards)
+AS darbinieks, Viesnica_dp41.darbinieks.darbinieka_ID AS DarbiniekaID, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
+Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs,
+Viesnica_dp41.dzivokla_tips.tipa_nosaukums AS tips, Viesnica_dp41.dzivokla_izmers.izmers AS izmers
+From Viesnica_dp41.darbinieks
+inner join Viesnica_dp41.saraksts
+on Viesnica_dp41.darbinieks.darbinieka_ID = Viesnica_dp41.saraksts.darbinieka_ID
+inner join Viesnica_dp41.dzivoklis
+on Viesnica_dp41.saraksts.dzivokla_ID = Viesnica_dp41.dzivoklis.dzivokla_ID
+inner join Viesnica_dp41.viesnica
+on Viesnica_dp41.viesnica.viesnicas_ID = Viesnica_dp41.dzivoklis.viesnicas_ID
+INNER JOIN Viesnica_dp41.dzivokla_tips
+ON Viesnica_dp41.dzivoklis.tipa_ID = Viesnica_dp41.dzivokla_tips.tipa_ID
+INNER JOIN Viesnica_dp41.dzivokla_izmers
+ON Viesnica_dp41.dzivoklis.izmera_ID = Viesnica_dp41.dzivokla_izmers.izmera_ID
+ORDER BY Viesnica_dp41.saraksts.saraksta_ID";
+    $result = $mysqli->query($sql);
 }
 
 else if(isset($_GET['dates']))
@@ -60,8 +89,9 @@ else if(isset($_GET['dates']))
 	$dates = $_GET['search_date'];
 	 
     $ascSql="Select Viesnica_dp41.saraksts.saraksta_ID AS saraksts, CONCAT_WS(' ',Viesnica_dp41.darbinieks.vards, Viesnica_dp41.darbinieks.uzvards)
-          AS darbinieks, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
-          Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs
+          AS darbinieks, Viesnica_dp41.darbinieks.darbinieka_ID AS DarbiniekaID, Viesnica_dp41.viesnica.nosaukums, Viesnica_dp41.saraksts.dzivokla_ID, Viesnica_dp41.saraksts.datums,
+          Viesnica_dp41.dzivoklis.dzivokla_numurs AS telpa, Viesnica_dp41.dzivoklis.stavs AS stavs,
+          Viesnica_dp41.dzivokla_tips.tipa_nosaukums AS tips, Viesnica_dp41.dzivokla_izmers.izmers AS izmers
           From Viesnica_dp41.darbinieks
           inner join Viesnica_dp41.saraksts
           on Viesnica_dp41.darbinieks.darbinieka_ID = Viesnica_dp41.saraksts.darbinieka_ID
@@ -69,7 +99,11 @@ else if(isset($_GET['dates']))
           on Viesnica_dp41.saraksts.dzivokla_ID = Viesnica_dp41.dzivoklis.dzivokla_ID
           inner join Viesnica_dp41.viesnica
           on Viesnica_dp41.viesnica.viesnicas_ID = Viesnica_dp41.dzivoklis.viesnicas_ID
-          Where Viesnica_dp41.dzivoklis.dzivokla_numurs = '$dates'";
+          INNER JOIN Viesnica_dp41.dzivokla_tips
+          ON Viesnica_dp41.dzivoklis.tipa_ID = Viesnica_dp41.dzivokla_tips.tipa_ID
+          INNER JOIN Viesnica_dp41.dzivokla_izmers
+          ON Viesnica_dp41.dzivoklis.izmera_ID = Viesnica_dp41.dzivokla_izmers.izmera_ID
+          Where Viesnica_dp41.saraksts.datums >= CURDATE() AND Viesnica_dp41.dzivoklis.dzivokla_numurs = '$dates'";
 
     $result = $mysqli->query($ascSql);
 }
@@ -103,6 +137,7 @@ else if(isset($_GET['dates']))
 		    <form action="schedule.php" method="GET">
 	            <input type="text" name="search_text" placeholder="Meklēt darbinieku" class="MekletINPUT">
 		        <input type="submit" name="search" value="Meklēt" class="MekletBTN">
+				<input type="submit" name="orderBy" value="Pilns saraksts" class="SarakstsBTN">
 	        </form>
 	    </div>
 	    <br>
@@ -139,7 +174,7 @@ else if(isset($_GET['dates']))
               <tr>
                   <td><?php echo "<a href='worker.php?id={$rows['DarbiniekaID']}'>{$rows['darbinieks']}</a>";?></td>
                   <td><?php echo $rows['nosaukums'];?></td>
-                  <td><?php echo "Numurs: ".$rows['telpa']. " Stāvs: ". $rows['stavs'];?></td>
+                  <td><?php echo "Numurs: ".$rows['telpa']. " Stāvs: ". $rows['stavs']. " <br>Izmērs: ".$rows['izmers']. " <br>Tips: ".$rows['tips'];?></td>
                   <td><?php echo $rows['datums'];?></td>
 		          <td><?php echo "<a href='update.php?id={$rows['saraksts']}'>Mainīt</a>";?></td>
 		          <td><?php echo "<a href='delete.php?id={$rows['saraksts']}'>Dzsēst</a>";?></td>
@@ -152,7 +187,7 @@ else if(isset($_GET['dates']))
 		</div>
 		<form action="pdfReport.php" method="POST">
 		<div class="btn-right">
-            <input type="submit" value="Printēt" id="btn2">
+            <input type="submit" value="Izdrukāt" id="btn2">
         </div>
 		</form>
     </div>

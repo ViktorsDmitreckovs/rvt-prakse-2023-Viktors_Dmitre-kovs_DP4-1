@@ -15,8 +15,9 @@ if ($mysqli->connect_error) {
     $mysqli->connect_error);
 }
  
-$sql = "Select darbinieka_ID, vards, uzvards
-From Viesnica_dp41.darbinieks";
+$sql = "Select darbinieka_ID, vards, uzvards, loma
+From Viesnica_dp41.darbinieks
+WHERE loma = 2";
 $result = $mysqli->query($sql);
 
 $sql3 = "Select viesnicas_ID, nosaukums
@@ -72,7 +73,7 @@ $result4 = $mysqli->query($sql4);
             </div>
 
             <label for="date">Datums</label><br>
-            <input type="text" id="date" name="date"><br><br>
+            <input type="text" id="date" name="date" placeholder="YYYY-MM-DD"><br><br>
 			
 
             <div style="overflow: auto">
@@ -86,10 +87,13 @@ $result4 = $mysqli->query($sql4);
 
             <?php
             
-
+            if ( isset($_POST['room']) && isset($_POST['name']) && isset($_POST['date']) ){
             $telpa = $_POST['room'];
             $darbinieks = $_POST['name'];
             $datums = $_POST['date'];
+			}
+			
+			
 
             if(isset($_POST['submit'])){
                 $dzivoklis = $_POST['room'];
@@ -99,10 +103,16 @@ $result4 = $mysqli->query($sql4);
                 $query = "Insert into Viesnica_dp41.saraksts(dzivokla_ID, darbinieka_ID, datums)
                 VALUES($telpa,$darbinieks,'$datums')";
                 $result = $mysqli->query($query);
-                if($result){
+                if($result && $datums!=''){
                     echo "<script> window.location.href = 'http://localhost/viesnica_dp41/schedule-dm.php'
                     alert('Saraksts pievienots!');</script>";
                 }
+				else if(preg_match("/[a-z]/i", $datums)){
+					echo '<script type="text/javascript">alert("Ievadiet pareizi datumu")</script>';
+				}
+				else{
+				    echo '<script type="text/javascript">alert("Ievadiet datumu")</script>';
+				}
             }
 			else if(isset($_POST['cancel'])){
 			    header('location: schedule-dm.php');
