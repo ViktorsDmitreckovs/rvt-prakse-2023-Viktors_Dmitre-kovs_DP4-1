@@ -1,5 +1,6 @@
 # Viesnīcas apkopēja uzskaites un darbu slodzes sarakstu izveidošanas sistēma
 ## Viktors Dmitrēckovs DP4-1
+## Links uz projektu: http://vdviesnica.id.lv/
 ### Projekta apraksts
 Kvalifikācijas darba uzdevums ir izveidot apkopēja uzskaites un darba slodzes sarakstu izveidošanas sistēmu viesnīcām. Ar tās palīdzību viesnīcas vadītāji var izveidot sarakstu un ievadīt informāciju par darbinieka nostrādāto stundas skaitu. Šī sistēma palīdzēs risināt viesnīcas vadītāju problēmu – papīra izmantošana darbinieka slodzes sarakstu izveidošanai. Galvenais iemesls tam ir tas, ka viesnīcā nav šim uzdevumam paredzētas sistēmas vai sistēma ir grūti saprotama un lietojama. Lai izlabotu problēmas, vajadzētu izveidot intuitīvi saprotamu sistēmu, kas neprasa no vadītāja daudz darbības. Tiešsaistes saraksts atvieglo vadītāja darbu, kas saistīta ar darbinieka sadalījumu viesnīca. Saraksts arī palīdzes ātri atrast darbinieku, kas ir brīvs konkrētā datuma.
 
