@@ -87,6 +87,6 @@ Sistēmai ir divu veidu palaišana. Pirmā no tām ir lietotāja puses palaišan
 ![Attēls19](https://github.com/ViktorsDmitreckovs/rvt-prakse-2023-Viktors_Dmitreckovs_DP4-1/assets/70627510/bfcdf209-5096-4cd8-83be-2835339fdf4a) 
 
 * “User” un “password” Jūs varat pārbaudīt attēlā, kas ir  5.punktā.
-13. Beigas jārestartē(jānomaina vārdu) programmu un tagad Jūs varat aplūkot savu projektu.
+13. Beigas jārestartē programmu un tagad Jūs varat aplūkot savu projektu.
 
 
