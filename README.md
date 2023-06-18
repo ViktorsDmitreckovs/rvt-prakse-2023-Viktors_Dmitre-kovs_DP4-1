@@ -13,7 +13,7 @@ Viesnīcas apkopēja uzskaites un darba slodzes sarakstu izveidošanas sistēmai
 *	darbinieku, vadītāju reģistrācija un autorizācija.
 
 ### Izmantotās tehnoloģijas
-Laragon, MySQ 5.7.33 (2021.gada versija), MySQL Server 5.7., Visual Studio Code 1.73.1 (2022.gada versija), Javascript, PHP, HTML, CSS.
+Laragon, MySQL 5.7.33 (2021.gada versija), MySQL Server 5.7., Visual Studio Code 1.73.1 (2022.gada versija), Javascript, PHP, HTML, CSS.
 Izmantotas apmācības:
 * https://www.geeksforgeeks.org/create-a-drop-down-list-that-options-fetched-from-a-mysql-database-in-php/
 * https://youtu.be/wah7LavylBM
